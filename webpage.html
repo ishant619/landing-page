@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="webpage.css" />
+    <!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header class="head">
+        <h1> Tech Savy Gadgets </h1>
+    </header>
+
+    <nav class="navbar">
+
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+
+            <!-- NAVIGATION MENUS -->
+            <div class="menu">
+
+                <li><a href="home">Home</a></li>
+                <li><a href="about">About</a></li>
+
+                <li class="services">
+                    <a href="menu">Menu</a>
+
+                    <!-- DROPDOWN MENU -->
+                    <ul class="dropdown">
+                        <li><a href="/">Dropdown 1 </a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 2</a></li>
+                        <li><a href="/">Dropdown 3</a></li>
+                        <li><a href="/">Dropdown 4</a></li>
+                    </ul>
+
+                </li>
+
+                <li><a href="price">Pricing</a></li>
+                <li><a href="contract">Contact</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="items">
+            <div class="first">
+                <img src="images/pic1.jpg" id="img">
+            </div>
+            <div class="second">
+                <button onclick="previous()">Previous</button>
+                <button onclick="next()">Next</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var images = [
+            "images/pic1.jpg",
+            "images/pic2.jpg",
+            "images/pic3.jpg",
+            "images/pic4.jpg",
+            "images/pic5.jpg",
+            "images/pic6.jpg",
+            "images/pic7.jpg",
+            "images/pic8.jpg",
+        ]
+        var index=0;
+        var img = document.getElementById("img")
+        function previous(){
+            if(index==0)
+            index=images.length-1
+            else
+            index--
+
+             img.src=images[index]   
+        }
+        function next(){
+            if(index==images.length-1)
+            index=0
+            else
+            index++
+
+            img.src=images[index]
+        }
+    </script>
+
+    <!--contact form-->
+<div class="third">
+<span id="formerror"></span>
+<form name="myform" onsubmit="fun();return false">
+    <label>Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter Name" onchange="validatename()">
+    <span id="nameerror"></span>
+    <label>Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter Email Id" onchange="validateemail()">
+    <span id="emailerror"></span>
+    <label>Phone</label>
+    <input type="text" name="phone" id="phone" placeholder="Enter Phone Number" onchange="validatephone()">
+    <span id="phoneerror"></span>
+    <label>city</label>
+    <input type="text" name="city" id="city" placeholder="Enter City Name" onchange="validatecity()">
+    <span id="cityerror"></span>
+    <label>State</label>
+    <input type="text" name="state" id="state" placeholder="Enter State Name" onchange="validatestate()">
+    <span id="stateerror"></span>
+    <button type="submit">Submit</button>
+</form>
+</div>
+<script>
+    var namevalidator = false;
+    var emailvalidator = false;
+    var phonevalidator = false;
+    var cityvalidator = false;
+    var statevalidator = false;
+    function validatename() {
+        var name = document.getElementById("name").value
+        if (name.length < 3) {
+            document.getElementById("nameerror").innerHTML = "Name must be atleast 3 Characters"
+            namevalidator = false
+        }
+        else {
+            document.getElementById("nameerror").innerHTML = ""
+            namevalidator = true
+        }
+    }
+    function validateemail() {
+        var email = document.getElementById("email").value
+        if (email.length < 13) {
+            document.getElementById("emailerror").innerHTML = "email must be atleast 13 Characters"
+            emailvalidator = false
+        }
+        else {
+            document.getElementById("emailerror").innerHTML = ""
+            emailvalidator = true
+        }
+    }
+    function validatephone() {
+        var phone = document.getElementById("phone").value
+        if (phone.length != 10) {
+            document.getElementById("phoneerror").innerHTML = "phone Number must be 10 Digits"
+            phonevalidator = false
+        }
+        else {
+            document.getElementById("phoneerror").innerHTML = ""
+            phonevalidator = true
+        }
+    }
+    function validatecity() {
+        var city = document.getElementById("city").value
+        if (city.length < 3) {
+            document.getElementById("cityerror").innerHTML = "city must be atleast 3 Characters"
+            cityvalidator = false
+        }
+        else {
+            document.getElementById("cityerror").innerHTML = ""
+            cityvalidator = true
+        }
+    }
+    function validatestate() {
+        var state = document.getElementById("state").value
+        if (state.length < 2) {
+            document.getElementById("stateerror").innerHTML = "state must be atleast 2 Characters"
+            statevalidator = false
+        }
+        else {
+            statevalidator = true
+        }
+    }
+    function fun() {
+
+        if (namevalidator && emailvalidator && phonevalidator && cityvalidator && statevalidator) {
+            var name = document.getElementById("name").value
+            var email = document.getElementById("email").value
+            var phone = document.getElementById("phone").value
+            var city = document.getElementById("city").value
+            var state = document.getElementById("state").value
+
+            document.getElementById("formerror").innerHTML = ""
+        }
+        else
+            document.getElementById("formerror").innerHTML = "Please Fill all Details Correctly"
+    }
+</script>
+
+<footer>
+    <div class="footer">
+    <div class="row">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-youtube"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    </div>
+    
+    <div class="row">
+    <ul>
+    <li><a href="#">Contact us</a></li>
+    <li><a href="#">Our Services</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms & Conditions</a></li>
+    <li><a href="#">Career</a></li>
+    </ul>
+    </div>
+    
+    <div class="row">
+    INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: ADONIS
+    </div>
+    </div>
+    </footer>
+</body>
+
+</html>
